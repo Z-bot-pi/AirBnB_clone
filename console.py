@@ -122,9 +122,11 @@ class HBNBCommand(cmd.Cmd):
         if not class_name:
             print("** class name missing **")
             return
+        elif class_name not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+            return
         #create Place city_id="0001" user_id="0001" name="My_little_house"
         all_list = args.split(" ")
-
 
         new_instance = eval(class_name)()
 
@@ -138,12 +140,16 @@ class HBNBCommand(cmd.Cmd):
                 except Exception:
                     print(f"**couldnt evaluate{value}")
                     pass
-        if hasattr(new_instance, key):
-            setattr(new_instance, key, value)
+      
+            if hasattr(new_instance, key):
+              setattr(new_instance, key, value)
 
-storage.new(new_instance)
-print(new_instance.id)
-new_instance.save()
+        storage.new(new_instance)
+        print(new_instance.id)
+        new_instance.save()
+
+
+
 
     def help_create(self):
         """ Help information for the create method """
