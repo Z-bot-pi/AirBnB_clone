@@ -18,3 +18,5 @@ GRANT SELECT ON performance_schema.* TO 'hbnb_dev'@'localhost';
 
 -- Flush privileges to apply changes
 FLUSH PRIVILEGES;
+
+mysql -hlocalhost -uroot -p
